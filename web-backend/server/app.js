@@ -9,8 +9,8 @@ const App = Express();
 App.use(BodyParser.json({limit: "50mb"}));
 App.use(BodyParser.urlencoded({limit: "50mb", extended: true}));
 App.set("view engine", "ejs");
-App.set("views", Path.join(__dirname, "/views"));
-App.use("/assets", Express.static(Path.join(__dirname, "/assets")));
+App.set("views", Path.join(__dirname, "../", "/views"));
+App.use("/assets", Express.static(Path.join(__dirname, "../", "/assets")));
 
 App.use(Session({
     secret: Constants.SESSION_SECRET,
@@ -20,5 +20,5 @@ App.use(Session({
 }));
 
 App.listen(Constants.PORT, () => {
-    console.log(`The Wall app listening on port ${Constants.PORT}`);
-})
+    console.log(`The Wall app listening on port ${Constants.PORT}, PID ${process.pid}`);
+});

@@ -2,6 +2,8 @@ const Express = require("express");
 const BodyParser = require("body-parser");
 const Path = require("path");
 const Session = require("express-session");
+const UserRoutes = require("./routes/user.routes");
+const WallRoutes = require("./routes/wall.routes");
 
 const Constants = require("./config/constants");
 const App = Express();
@@ -18,6 +20,9 @@ App.use(Session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
+App.use("/", UserRoutes);
+App.use("/wall", WallRoutes);
 
 App.listen(Constants.PORT, () => {
     console.log(`The Wall app listening on port ${Constants.PORT}, PID ${process.pid}`);

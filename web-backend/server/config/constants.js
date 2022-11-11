@@ -5,9 +5,10 @@ const Constants = {};
 
 let env_file = `${process.env.NODE_ENV}.env.yml`;
 
-let fileContents = Fs.readFileSync(__dirname+"/"+env_file, "utf8");
-let data = Yaml.load(fileContents);
+let file_contents = Fs.readFileSync(`${__dirname}/${env_file}`);
+let data = Yaml.load(file_contents);
 
+/* Loop constants data from yml file. */
 for(let key in data){
     Constants[key] = data[key];
 }

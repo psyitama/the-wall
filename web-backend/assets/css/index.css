@@ -1,0 +1,24 @@
+.register .error {
+    color: red;
+}
+
+nav h1,
+nav a {
+    display: inline-block;
+}
+
+nav h1 {
+    width: 75%;
+}
+
+form > * {
+    display: block;
+}
+
+form input {
+    margin-top: 5px;
+}
+
+.comment-section {
+    margin-left: 150px;
+}

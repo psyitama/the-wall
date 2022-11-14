@@ -58,4 +58,17 @@ GlobalHelpers.encryptPassword = (plain_password) => {
     });
 }
 
+GlobalHelpers.comparePassword = (submitted_password, current_password) => {
+    return new Promise((resolve, reject) => {
+        Bcrypt.compare(submitted_password, current_password, (err, result) => {
+            if(err){
+                reject(err);
+            }
+            else{
+                resolve(result);
+            }
+        });
+    });
+}
+
 module.exports = GlobalHelpers;

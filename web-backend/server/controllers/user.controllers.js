@@ -1,7 +1,7 @@
 const Bcrypt = require("bcrypt");
 const UserModel = require("../models/user.model");
 const { API_URL } = require("../config/constants");
-const { checkFields, encryptPassword } = require("../helpers/index");
+const { checkFields, encryptPassword, comparePassword } = require("../helpers/index");
 
 class UserControllers {
     #req;
@@ -37,13 +37,9 @@ class UserControllers {
                 let {result: [user]} = await userModel.fetchUser(email);
 
                 if(user){
-                    let is_password_incorrect = false;
+                    let is_password_correct = await comparePassword(password, user.password);
 
-                    Bcrypt.compare(password, user.password, (err, result) => {
-                        is_password_incorrect = result;
-                    });
-
-                    if(!is_password_incorrect){
+                    if(is_password_correct){
                         let{ password, ...user_data } = user
 
                         this.#req.session.user = { ...user_data };
@@ -67,7 +63,7 @@ class UserControllers {
             console.log(error);
             response_data.error = error;
         }
-
+        console.log(response_data);
         this.#res.json(response_data);
     }
 

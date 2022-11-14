@@ -1,3 +1,0 @@
-<% for(let index = 0; index < messages.length; index++){ %>
-    <%- include("./message_item.partial.ejs", { message: messages[index], message_comments: comments[`message_id_${index}`] || [], API_URL }); %>
-<% } %>

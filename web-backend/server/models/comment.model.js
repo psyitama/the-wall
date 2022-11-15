@@ -47,7 +47,6 @@ class CommentModel extends DatabaseModel {
             }
         }
         catch(error){
-            console.log(error);
             response_data.error = error;
         }
 

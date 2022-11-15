@@ -60,10 +60,9 @@ class UserControllers {
             }
         }
         catch(error){
-            console.log(error);
             response_data.error = error;
         }
-        console.log(response_data);
+
         this.#res.json(response_data);
     }
 

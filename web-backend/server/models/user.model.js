@@ -19,7 +19,7 @@ class UserModel extends DatabaseModel{
         catch(error){
             response_data.error = error;
         }
-        console.log(response_data); 
+
         return response_data;
     }
 

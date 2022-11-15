@@ -1,0 +1,5 @@
+<div class="messages">
+    <% for(let index = 0; index < PAGE_PARAMS.data.length; index++){ %>
+        <%- include("./message_item.partial.ejs", { message: PAGE_PARAMS.data[index]}) %>
+    <% } %>
+</div>s

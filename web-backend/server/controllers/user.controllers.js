@@ -24,6 +24,7 @@ class UserControllers {
         }
     }
 
+    /* Method to login an user */
     loginUser = async () => {
         let response_data = { status: false, result: {}, error: null };
 
@@ -66,6 +67,7 @@ class UserControllers {
         this.#res.json(response_data);
     }
 
+    /* Method to register an user */
     registerUser = async () => {
         let response_data = { status: false, result: {}, error: null };
 

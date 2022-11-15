@@ -6,6 +6,7 @@ class UserModel extends DatabaseModel{
         super();
     }
 
+    /* Method to fetch an user */
     fetchUser = async (email_address) => {
         let response_data = { status: false, result: {}, error: null };
 
@@ -23,6 +24,7 @@ class UserModel extends DatabaseModel{
         return response_data;
     }
 
+    /* Method to add an user */
     insertUser = async (post_data) => {
         let response_data = { status: false, result: {}, error: null };
 

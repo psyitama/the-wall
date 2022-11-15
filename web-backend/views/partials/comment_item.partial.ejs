@@ -1,0 +1,10 @@
+<div class="comment_id_<%= comment.id %>">
+    <h3><%= comment.posted_by %> - <%= comment.posted_on %></h3>
+    <% if(parseInt(comment.user_id) === parseInt(current_user_id)){ %>
+        <form class="delete_comment_form" action="<%= API_URL %>wall/delete_comment" method="POST">
+            <input type="hidden" name="comment_id" value="<%= comment.id %>">
+            <input type="submit" value="Delete comment">
+        </form>
+    <% } %>
+    <p><%= comment.comment %></p>
+</div>

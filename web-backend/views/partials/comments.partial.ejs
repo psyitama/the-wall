@@ -1,0 +1,5 @@
+<div class="comments">
+    <% for(let index = 0; index < comments.length; index++){ %>
+        <%- include("./comment_item.partial.ejs", { comment: comments[index] }) %>
+    <% } %>
+</div>

@@ -13,4 +13,9 @@ for(let key in data){
     Constants[key] = data[key];
 }
 
+Constants.BOOLEAN_FIELD = {
+    true_value: 1,
+    false_value: 0
+}
+
 module.exports = Constants;

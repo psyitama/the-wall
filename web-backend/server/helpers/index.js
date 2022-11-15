@@ -2,6 +2,7 @@ const Bcrypt = require("bcrypt");
 
 const GlobalHelpers = {};
 
+/* Function to validate API payload. */
 GlobalHelpers.checkFields = (required_fields, optional_fields = [], req_body) => {
     let response_data = { status: false, result: {}, error: null };
 
@@ -36,6 +37,7 @@ GlobalHelpers.checkFields = (required_fields, optional_fields = [], req_body) =>
     return response_data;
 }
 
+/* Function to encrypt a password using Bcrypt */
 GlobalHelpers.encryptPassword = (plain_password) => {
     return new Promise((resolve, reject) => {
         const salt_rounds = 10;
@@ -58,6 +60,7 @@ GlobalHelpers.encryptPassword = (plain_password) => {
     });
 }
 
+/* Function to compare encrypted and not encrypted password using Bcrypt */
 GlobalHelpers.comparePassword = (submitted_password, current_password) => {
     return new Promise((resolve, reject) => {
         Bcrypt.compare(submitted_password, current_password, (err, result) => {

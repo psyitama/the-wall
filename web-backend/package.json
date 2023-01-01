@@ -4,7 +4,7 @@
   "description": "Village88 Wall Challenge",
   "main": "app.js",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development nodemon --inspect server/app"
+    "dev": "NODE_ENV=development nodemon -L --inspect=0.0.0.0 server/app"
   },
   "author": "Psyrone Agpalo",
   "license": "ISC",

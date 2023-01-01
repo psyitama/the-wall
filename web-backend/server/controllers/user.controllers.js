@@ -1,4 +1,4 @@
-const Bcrypt = require("bcrypt");
+const Bcrypt = require("bcryptjs");
 const UserModel = require("../models/user.model");
 const { API_URL } = require("../config/constants");
 const { checkFields, encryptPassword, comparePassword } = require("../helpers/index");

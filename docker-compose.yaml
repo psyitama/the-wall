@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  web-backend:
+    build: ./web-backend
+    container_name: wall_c
+    ports:
+      - 3000:3000
+      - 9229:9229
+    volumes:
+      - ./web-backend:/app
+      - ./web-backend/app:/node_modules

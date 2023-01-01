@@ -15,30 +15,30 @@ class MessageModel extends DatabaseModel {
             let fetch_messages_query = mysqlFormat(`
                 SELECT 
                     messages.id, user_id, message,
-                    IFNULL(
-                        (SELECT 
-                            JSON_ARRAYAGG(JSON_OBJECT(
-                                "id", comments.id, 
-                                "user_id", comments.user_id,
-                                "comment", comments.comment,
-                                "posted_by", CONCAT(users.first_name, ' ', users.last_name),
-                                "posted_on", DATE_FORMAT(comments.created_at, "%M %D, %Y"))) 
-                        FROM comments 
+                    IFNULL((
+                        SELECT JSON_ARRAYAGG(JSON_OBJECT(
+                            "id", comments.id,
+                            "user_id", comments.user_id,
+                            "comment", comments.comment,
+                            "posted_by", CONCAT(users.first_name, ' ', users.last_name),
+                            "posted_on", DATE_FORMAT(comments.created_at, "%M %D, %Y")
+                        )) AS comments
+                        FROM comments
                         INNER JOIN users ON users.id = comments.user_id
                         WHERE 
-                            message_id = messages.id 
+                            message_id = messages.id
                             AND comments.is_archived = 0
                         ),
                         '[]'
                     ) AS comments,
-                    CONCAT(users.first_name, ' ', users.last_name) AS posted_by, DATE_FORMAT(messages.created_at, "%M %D, %Y") AS posted_on
+                    CONCAT(users.first_name, ' ', users.last_name) AS posted_by,
+                    DATE_FORMAT(messages.created_at, "%M %D, %Y") AS posted_on
                 FROM messages
                 INNER JOIN users ON users.id = messages.user_id
                 WHERE messages.is_archived = 0;
             `);
-            let fetch_messages_result = await this.executeQuery(fetch_messages_query);
 
-            response_data.result = fetch_messages_result;
+            response_data.result = await this.executeQuery(fetch_messages_query);
             response_data.status = true;
         }
         catch(error){

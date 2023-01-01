@@ -16,7 +16,7 @@ class CommentModel extends DatabaseModel {
             let insert_comment_result = await this.executeQuery(insert_comment_query);
 
             if(insert_comment_result.affectedRows){
-                response_data.result = { message_id: post_data.message_id, comment_id: insert_comment_result.insertId };
+                response_data.result = { comment_id: insert_comment_result.insertId, message_id: post_data.message_id };
                 response_data.status = true;
             }
             else{

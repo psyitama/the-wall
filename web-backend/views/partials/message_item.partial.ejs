@@ -1,7 +1,7 @@
 <div class="message_<%= message.id %>">
-    <h3><%= message.posted_by %> - <%= message.posted_on %></h3>
-    <% if(parseInt(message.user_id) === parseInt(current_user_id)){ %>
-        <form class="delete_message_form" action="<%= API_URL %>wall/delete_message" method="POST">
+    <h3><%= message.posted_by%> - <%= message.posted_on %></h3>
+    <% if(message.user_id === current_user_id){ %>
+        <form  class="delete_message_form" action="<%= API_URL %>wall/delete_message" method="POST">
             <input type="hidden" name="message_id" value="<%= message.id %>">
             <input type="submit" value="Delete message">
         </form>
